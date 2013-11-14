@@ -11,6 +11,13 @@ public class DemoRed_Black_Trees
 {
 	public static void main(String[] args) throws IOException
 	{
+		if(args.length != 2 || args[0].equalsIgnoreCase("help"))
+		{
+			System.out.println("Argument is empty! Please provide the path of the input.txt");
+			System.out.println("Red_Black_Trees Path/to/input.txt Path/to/output.txt");
+			return;
+		}
+		
 		FileOutputStream fos = new FileOutputStream(args[1]); 
 		OutputStreamWriter out = new OutputStreamWriter(fos, "UTF-8");
 		
@@ -18,15 +25,7 @@ public class DemoRed_Black_Trees
 		RedBlackTree RBTree = new RedBlackTree(); 
 		int i=0, index=0;
 		Integer deleteKey;
-		
-		if(args.length != 2 || args[0].equalsIgnoreCase("help"))
-		{
-			System.out.println("Argument is empty! Please provide the path of the input.txt");
-			System.out.println("Red_Black_Trees Path/to/input.txt Path/to/output.txt");
-			out.close();
-			return;
-		}
-		
+
 		// Get an array of number from input.txt
 		/*
 		 *  input.txt assumption:
@@ -55,14 +54,14 @@ public class DemoRed_Black_Trees
 	    // <Node.key> <Node.color> <Node.Parent> <Parent Left or Right>
 		RBTree.printTree(out);
 		
-
-		// Please the following cases one by one, not at the same time!
+		// Please use the following cases one by one, not at the same time!
  		/*-----------------1. Manually Find and Delete One Node (Begin)----------------------------*/
 		/*
 		Scanner in = new Scanner(System.in);
 		System.out.println("Input a key to specify which node to delete: ");
 		Integer deleteKey = new Integer(in.nextInt());
 		System.out.println("The key you want to delete is: " + deleteKey.toString());
+		in.close();
 		
 		RedBlackNode node = RBTree.find(new RedBlackNode(deleteKey));
 		if(node != RBTree.nil)
