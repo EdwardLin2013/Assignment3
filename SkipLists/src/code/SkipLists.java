@@ -154,7 +154,6 @@ public class SkipLists
 			}
 			
 			out.print("\n");
-			
 		}
 	}
 }
