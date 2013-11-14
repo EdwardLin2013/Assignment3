@@ -16,7 +16,8 @@ public class DemoRed_Black_Trees
 		
 		ArrayList<Integer> inputArray = new ArrayList<Integer>();
 		RedBlackTree RBTree = new RedBlackTree(); 
-		int i=0;
+		int i=0, index=0;
+		Integer deleteKey;
 		
 		if(args.length != 2 || args[0].equalsIgnoreCase("help"))
 		{
@@ -54,33 +55,54 @@ public class DemoRed_Black_Trees
 	    // <Node.key> <Node.color> <Node.Parent> <Parent Left or Right>
 		RBTree.printTree(out);
 		
-/*
- 		// Manually Delete One Node
+
+		// Please the following cases one by one, not at the same time!
+ 		/*-----------------1. Manually Find and Delete One Node (Begin)----------------------------*/
+		/*
 		Scanner in = new Scanner(System.in);
 		System.out.println("Input a key to specify which node to delete: ");
 		Integer deleteKey = new Integer(in.nextInt());
-		System.out.println("The key you want to delete is: " + deleteKey);
+		System.out.println("The key you want to delete is: " + deleteKey.toString());
 		
 		RedBlackNode node = RBTree.find(new RedBlackNode(deleteKey));
 		if(node != RBTree.nil)
+		{
 			System.out.println("The node is found! " + node.key.toString());
+			RBTree.delete(node);
+			System.out.println("The node is delete!");
+		}
 		else
 			System.out.println("The node is not found!");
-			
-		RBTree.delete(node);
-		in.close();
-*/
+
+		out.write ("-------------After manually delete-------------\n");
+		RBTree.printTree(out);
+		*/
+		/*-----------------1. Manually Find and Delete One Node (END)----------------------------*/
 		
-		/* Delete the first half of the input numbers */
+		/*-----------------2. Delete the first half of the input numbers (Begin)----------------------------*/
+		/*
 		for (i = 0; i < inputArray.size()/2; i++)
-		{
 			RBTree.delete(RBTree.find(new RedBlackNode(inputArray.get(i))));
+		out.write ("-------------After delete the first half of the input numbers-------------\n");
+		RBTree.printTree(out);
+		 */		
+		/*-----------------2. Delete the first half of the input numbers (END)----------------------------*/
+		
+		/*-----------------3. Random choose the input number and then delete, the chosen number is removed from the Input Array (BEGIN)--------------------*/
+		i = inputArray.size()/2;
+		while(i>0)
+		{
+			index = (int)(Math.random()*inputArray.size());
+			deleteKey = new Integer(inputArray.get(index));
+			inputArray.remove(index);
+			
+			RBTree.delete(RBTree.find(new RedBlackNode(deleteKey)));
+			i--;
 		}
 		
-		out.write ("After delete\n");
-	    // In Ascending Order
-	    // <Node.key> <Node.color> <Node.Parent> <Parent Left or Right>
+		out.write ("-------------After Random Delete-------------\n");
 		RBTree.printTree(out);
+		/*-----------------3. Random choose the input number and then delete, the chosen number is removed from the Input Array (END)-----------------------*/
 		
 		out.close();
 	}

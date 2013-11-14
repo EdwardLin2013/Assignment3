@@ -148,7 +148,7 @@ public class RedBlackTree
     	root.color = BLACK;
     }
     
-    RedBlackNode treeMinimum(final RedBlackNode x)
+    RedBlackNode treeMinimum(final RedBlackNode x) 
     {
     	RedBlackNode ret = x;
     	while(ret.left != nil)
@@ -319,7 +319,7 @@ public class RedBlackTree
         return root == nil;
     }
 
-    // Print the tree contents in sorted order.
+    // Print the tree contents in Ascending Order.
     public void printTree(OutputStreamWriter out) throws IOException
     {
         if( isEmpty( ) )
@@ -328,11 +328,6 @@ public class RedBlackTree
             printTree(root, out);
     }
 
-    /**
-     * Internal method to print a subtree in sorted order.
-     * @param t the node that roots the tree.
-     * @throws IOException 
-     */
     // In Ascending Order
     // <Node.key> <Node.color> <Node.Parent> <Parent Left or Right>
     private void printTree(RedBlackNode node, OutputStreamWriter out) throws IOException
